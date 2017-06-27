@@ -1,30 +1,34 @@
 var assert = require("assert");
 
-function  propiedadObjetos (arr){
-  var longitud = arr.length;
-  var cadena = "";
-  var texto= { //OBJETO LITERAL
-    propiedad : function (){
-        for (var i in arr){
-          
-        }
+function ArregloObjt (){
 
+  this.cadenas = ""; 
+  this.cadena = "Propiedad";
+  cont = 1;
+  this.metodo = function(arr){
+    for (var i=0; i<arr.length ; i++){
+     this.numero = arr[i];
+     this.cadenas += this.cadena + " " + cont + " --> " + this.numero + ";";
+      cont++;
     }
+    return this.cadenas;
   }
-  return texto.metodo();
 
-  var resultado = "";
-  for (var i in texto) {
-    if (texto.hasOwnProperty(i)) {
-        resultado += propiedad + "." + i + " = " + texto[i] + "\n";
-    }
-  }
-  return resultado;
+}
+
+function arreglos(arr){
+  var arreglo = new ArregloObjt();
+  return arreglo.metodo(arr);
 }
 
 
 describe("Funcion Texto", function(){
     it("Prueba de [6,5,4,3,2,1]", function(){
-        assert.equal("Propiedad1 -->6,Propiedad1 -->5,Propiedad1 -->4,Propiedad1 -->3,Propiedad1 -->2,Propiedad1 -->1,",propiedadObjetos([6,5,4,3,2,1]));
+        assert.equal("Propiedad 1 --> 6;Propiedad 2 --> 5;Propiedad 3 --> 4;Propiedad 4 --> 3;Propiedad 5 --> 2;Propiedad 6 --> 1;",arreglos([6,5,4,3,2,1]));
+    });
+    it("Prueba de [6,5,4,3]", function(){
+        assert.equal("Propiedad 1 --> 6;Propiedad 2 --> 5;Propiedad 3 --> 4;Propiedad 4 --> 3;",arreglos([6,5,4,3]));
     });
 });
+
+
